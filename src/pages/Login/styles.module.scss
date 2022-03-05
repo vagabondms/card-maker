@@ -1,0 +1,20 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+.auth {
+  text-align: center;
+}
+
+.button {
+  margin: 30px;
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 20px;
+}
