@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
-import { initializeApp } from "firebase/app";
 
 ReactDOM.render(
   <React.StrictMode>

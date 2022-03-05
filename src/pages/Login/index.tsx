@@ -4,8 +4,7 @@ import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { useAuth } from "../../hooks/useAuth";
-
-import { googleSignIn } from "../../service";
+import { googleSignIn } from "../../service/auth";
 
 import styles from "./styles.module.scss";
 
