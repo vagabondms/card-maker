@@ -1,7 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
 const Main = () => {
-  return <div>Main</div>;
+  return (
+    <section>
+      <Header></Header>
+      <section></section>
+      <Footer></Footer>
+    </section>
+  );
 };
 
 export default Main;

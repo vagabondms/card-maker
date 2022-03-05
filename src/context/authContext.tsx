@@ -1,11 +1,17 @@
-import React, { createContext, ReactElement, ReactNode, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import React, {
+  createContext,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { auth } from "../service/auth";
 
 const AuthContext = createContext({
-  user: "",
-  signIn: (userId: string) => {},
-  signOut: () => {},
+  userId: null as null | string,
 });
 
 type AuthProps = {
@@ -13,19 +19,16 @@ type AuthProps = {
 };
 
 const AuthProvider = ({ children }: AuthProps) => {
-  const [user, setUser] = useState("");
-  const signIn = (userId: string) => {
-    setUser(userId);
-  };
+  const [userId, setUser] = useState<string | null>(null);
 
-  const signOut = () => {
-    setUser("");
-  };
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user?.uid || null);
+    });
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signOut }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ userId }}>{children}</AuthContext.Provider>
   );
 };
 
@@ -34,12 +37,21 @@ type RequireAuthProps = {
 };
 
 const RequireAuth = ({ children }: RequireAuthProps) => {
-  const { user } = useAuth();
+  const { userId } = useAuth();
   const location = useLocation();
-  if (user === "") {
+  if (!userId) {
     return <Navigate state={{ from: location }} to="/login" replace></Navigate>;
   }
   return children;
 };
 
-export { AuthContext, AuthProvider, RequireAuth };
+const CannotAccessAfterAuth = ({ children }: RequireAuthProps) => {
+  const { userId } = useAuth();
+
+  if (userId) {
+    return <Navigate to="/" replace></Navigate>;
+  }
+  return children;
+};
+
+export { AuthContext, AuthProvider, RequireAuth, CannotAccessAfterAuth };

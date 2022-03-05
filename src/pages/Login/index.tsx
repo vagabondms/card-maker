@@ -1,35 +1,36 @@
-import React from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { useAuth } from "../../hooks/useAuth";
-import { gitHubSignIn, googleSignIn } from "../../service/auth";
+
+import { auth, gitHubSignIn, googleSignIn } from "../../service/auth";
 
 import styles from "./styles.module.scss";
 
 const Login = () => {
-  const { signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = (location.state as { from: Location })?.from?.pathname || "/";
 
   const google = async () => {
-    const {
-      user: { uid },
-    } = await googleSignIn();
-    signIn(uid);
+    await googleSignIn();
+
     navigate(from, { replace: true });
   };
 
   const github = async () => {
-    const {
-      user: { uid },
-    } = await gitHubSignIn();
-    signIn(uid);
+    await gitHubSignIn();
+
     navigate(from, { replace: true });
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {});
+  }, []);
 
   return (
     <section className={styles.login}>

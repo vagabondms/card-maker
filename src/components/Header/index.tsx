@@ -1,13 +1,15 @@
 import React from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { authSignOut } from "../../service/auth";
 import styles from "./styles.module.scss";
 
 const Header = () => {
-  const { user, signOut } = useAuth();
+  const { userId } = useAuth();
+
   return (
     <header className={styles.header}>
-      {user && (
-        <button className={styles.logout} onClick={signOut}>
+      {userId && (
+        <button className={styles.logout} onClick={authSignOut}>
           Logout
         </button>
       )}
