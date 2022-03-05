@@ -1,3 +1,5 @@
+@use "src/styles/colors" as colors;
+
 .login {
   width: 100vw;
   height: 100vh;
@@ -7,14 +9,24 @@
   align-items: center;
   background-color: grey;
 }
+
 .auth {
   text-align: center;
+  padding: 10px;
 }
 
 .button {
-  margin: 30px;
-  background: none;
-  border: 1px solid black;
-  border-radius: 5px;
-  font-size: 20px;
+  width: 100%;
+  height: 2.5em;
+  font-size: 1.2rem;
+  border-radius: 1.2rem;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0.2rem solid colors.$color-dark-blue;
+  outline: 0;
+  margin-bottom: 0.5em;
+}
+
+.button:hover {
+  background-color: colors.$color-light-pink;
 }

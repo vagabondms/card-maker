@@ -1,10 +1,20 @@
 import firebaseApp from "./firebase";
 
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
 const auth = getAuth(firebaseApp);
 
 export const googleSignIn = async () => {
-  return signInWithPopup(auth, provider);
+  return signInWithPopup(auth, googleProvider);
+};
+
+export const gitHubSignIn = async () => {
+  return signInWithPopup(auth, gitHubProvider);
 };

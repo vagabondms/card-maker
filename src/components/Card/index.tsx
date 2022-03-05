@@ -9,11 +9,11 @@ type CardProps = {
 
 const index = ({ children, header, footer, width }: CardProps) => {
   return (
-    <div className={styles.card} style={{ width: width + "px" }}>
+    <section className={styles.card} style={{ width: width + "rem" }}>
       {header}
       {children}
       {footer}
-    </div>
+    </section>
   );
 };
 
