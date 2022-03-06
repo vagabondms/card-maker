@@ -7,15 +7,24 @@ import styles from "./styles.module.scss";
 type MakerProps = {
   cards: Card[];
   addCard: (cardInfo: Card) => void;
+  deleteCard: (cardId: string) => void;
+  changeCardInfo: (id: string, key: string, value: string) => void;
 };
 
-const index = ({ cards, addCard }: MakerProps) => {
+const index = ({ cards, addCard, deleteCard, changeCardInfo }: MakerProps) => {
   return (
     <section className={styles.maker}>
       <h3 className={styles.title}>Card Maker</h3>
       <ul>
         {cards.map((card) => {
-          return <CardEditForm card={card} key={card.id}></CardEditForm>;
+          return (
+            <CardEditForm
+              card={card}
+              key={card.id}
+              deleteCard={deleteCard}
+              changeCardInfo={changeCardInfo}
+            ></CardEditForm>
+          );
         })}
         <CardAddForm addCard={addCard}></CardAddForm>
       </ul>

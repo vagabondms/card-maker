@@ -34,16 +34,9 @@ const Index = ({ addCard }: CardEditFormProps) => {
     formRef?.current?.reset();
   };
 
-  const handleFormChange = (e: ChangeEvent<HTMLFormElement>) => {};
-
   return (
     <div className={styles.card}>
-      <form
-        className={styles.form}
-        onSubmit={handleSubmit}
-        onChange={handleFormChange}
-        ref={formRef}
-      >
+      <form className={styles.form} onSubmit={handleSubmit} ref={formRef}>
         <div className={styles.row}>
           <input
             ref={nameRef}
@@ -90,7 +83,9 @@ const Index = ({ addCard }: CardEditFormProps) => {
         </div>
         <div className={styles.row}>
           <input ref={fileRef} name="file" className={styles.file}></input>
-          <button className={styles.submit}>Add</button>
+          <button className={styles.submit} onClick={handleSubmit}>
+            Add
+          </button>
         </div>
       </form>
     </div>

@@ -82,6 +82,25 @@ const Main = () => {
     setCards((prev) => [...prev, { ...cardInfo, id: `${prev.length + 2}` }]);
   };
 
+  const deleteCard = (cardId: string) => {
+    setCards((prev) => prev.filter((card) => card.id !== cardId));
+  };
+
+  const changeCardInfo = (id: string, key: string, value: string) => {
+    setCards((prev) => {
+      return prev.map((card) => {
+        if (card.id === id) {
+          return {
+            ...card,
+            [key]: value,
+          };
+        } else {
+          return card;
+        }
+      });
+    });
+  };
+
   return (
     <section className={styles.main}>
       <Layout
@@ -96,7 +115,12 @@ const Main = () => {
         }}
       >
         <div className={styles.wrapper}>
-          <Maker cards={cards} addCard={addCard} />
+          <Maker
+            cards={cards}
+            addCard={addCard}
+            deleteCard={deleteCard}
+            changeCardInfo={changeCardInfo}
+          />
           <Preview cards={cards} />
         </div>
       </Layout>
