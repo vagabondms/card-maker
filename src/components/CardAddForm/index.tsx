@@ -51,9 +51,7 @@ const Index = ({ addCard }: CardEditFormProps) => {
             placeholder="Work"
           />
           <select ref={themeRef} name="theme" className={styles.select}>
-            <option value="dark" selected>
-              Dark
-            </option>
+            <option value="dark">Dark</option>
             <option value="light">Light</option>
             <option value="colorful">Colorful</option>=
           </select>

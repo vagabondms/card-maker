@@ -15,7 +15,9 @@ const index = ({ card, deleteCard, changeCardInfo }: CardEditFormProps) => {
   const handleDelete = () => {
     deleteCard(id);
   };
-  const handleChange = (e: ChangeEvent<HTMLFormElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const name = e.target.name;
     const value = e.target.value;
     changeCardInfo({
@@ -30,27 +32,44 @@ const index = ({ card, deleteCard, changeCardInfo }: CardEditFormProps) => {
 
   return (
     <li className={styles.card}>
-      <form
-        className={styles.form}
-        onSubmit={handleSubmit}
-        onChange={handleChange}
-      >
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
-          <input className={styles.input} name="name" value={name} />
-          <input className={styles.input} name="work" value={work} />
-          <select className={styles.select} name="theme" value={theme}>
+          <input
+            className={styles.input}
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
+          <input
+            className={styles.input}
+            name="work"
+            value={work}
+            onChange={handleChange}
+          />
+          <select
+            className={styles.select}
+            name="theme"
+            value={theme}
+            onChange={handleChange}
+          >
             <option value="dark">Dark</option>
             <option value="light">Light</option>
             <option value="colorful">Colorful</option>=
           </select>
         </div>
         <div className={styles.row}>
-          <input className={styles.input} name="job" value={job} />
+          <input
+            className={styles.input}
+            name="job"
+            value={job}
+            onChange={handleChange}
+          />
           <input
             className={styles.input}
             type="email"
             name="email"
             value={email}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.row}>
@@ -58,10 +77,15 @@ const index = ({ card, deleteCard, changeCardInfo }: CardEditFormProps) => {
             className={styles.input}
             name="description"
             value={description}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.row}>
-          <input className={styles.file} value={fileUrl ?? ""} />
+          <input
+            className={styles.file}
+            value={fileUrl ?? ""}
+            onChange={handleChange}
+          />
           <button
             className={styles.submit}
             type="button"
