@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useRef } from "react";
 import styles from "./styles.module.scss";
 import { Card } from "../../pages/Main";
 
