@@ -289,6 +289,8 @@ textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 2 */
   margin: 0; /* 3 */
+  appearance: none;
+  border: 1px solid black;
 }
 
 /**
@@ -403,4 +405,9 @@ textarea {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
 }

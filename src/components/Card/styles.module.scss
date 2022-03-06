@@ -1,0 +1,48 @@
+@use "src/styles/colors" as colors;
+
+.card {
+  color: white;
+  display: flex;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 1.5rem;
+  box-shadow: 6px 6px 8px 0px colors.$shadow-default;
+  max-width: 50rem;
+}
+
+.dark {
+  background-color: colors.$color-black;
+}
+.light {
+  background-color: colors.$color-white;
+  color: black;
+}
+.colorful {
+  background: colors.$color-colorful;
+  color: black;
+}
+
+.img {
+  width: 10em;
+  height: 10em;
+  padding: 1rem;
+  border-radius: 50%;
+}
+.description {
+  flex: 1;
+  line-height: 30%;
+  text-align: start;
+  margin-left: 1rem;
+}
+
+.work {
+  margin-bottom: 2em;
+}
+
+.work::after {
+  content: "";
+  display: block;
+  width: 90%;
+  border-bottom: 1px solid wheat;
+  transform: translateY(1rem);
+}

@@ -4,6 +4,8 @@
 .maker {
   flex: 1;
   text-align: center;
+
+  padding: 0 50px;
   border-right: 1px solid colors.$color-light-grey;
   @media screen and (max-width: mq.$mediaQuery) {
     border-right: none;
