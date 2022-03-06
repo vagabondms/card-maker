@@ -1,0 +1,33 @@
+@use "src/styles/colors" as colors;
+
+.card {
+  margin: 1.5rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid colors.$color-black;
+  border-left: 1px solid colors.$color-black;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.input,
+.textarea,
+.select,
+.button,
+.fileInput,
+.submit,
+.file {
+  flex: 1;
+  font-size: 0.8rem;
+  width: 100%;
+  border: 0;
+  padding: 0.5em;
+  border-bottom: 1px solid colors.$color-black;
+  border-right: 1px solid colors.$color-black;
+}

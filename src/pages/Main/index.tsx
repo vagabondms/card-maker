@@ -78,6 +78,10 @@ const Main = () => {
     },
   ]);
 
+  const addCard = (cardInfo: Card) => {
+    setCards((prev) => [...prev, { ...cardInfo, id: `${prev.length + 2}` }]);
+  };
+
   return (
     <section className={styles.main}>
       <Layout
@@ -92,7 +96,7 @@ const Main = () => {
         }}
       >
         <div className={styles.wrapper}>
-          <Maker cards={cards} />
+          <Maker cards={cards} addCard={addCard} />
           <Preview cards={cards} />
         </div>
       </Layout>
