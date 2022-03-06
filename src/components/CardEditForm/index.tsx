@@ -5,21 +5,23 @@ import { Card } from "../../pages/Main";
 type CardEditFormProps = {
   card: Card;
   deleteCard: (cardId: string) => void;
-  changeCardInfo: (id: string, key: string, value: string) => void;
+  changeCardInfo: (card: Card) => void;
 };
 
-const index = ({
-  card: { name, work, theme, job, email, description, fileUrl, fileName, id },
-  deleteCard,
-  changeCardInfo,
-}: CardEditFormProps) => {
+const index = ({ card, deleteCard, changeCardInfo }: CardEditFormProps) => {
+  const { name, work, theme, job, email, description, fileUrl, fileName, id } =
+    card;
+
   const handleDelete = () => {
     deleteCard(id);
   };
   const handleChange = (e: ChangeEvent<HTMLFormElement>) => {
     const name = e.target.name;
     const value = e.target.value;
-    changeCardInfo(id, name, value);
+    changeCardInfo({
+      ...card,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e: FormEvent) => {

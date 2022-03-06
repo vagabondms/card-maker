@@ -86,14 +86,11 @@ const Main = () => {
     setCards((prev) => prev.filter((card) => card.id !== cardId));
   };
 
-  const changeCardInfo = (id: string, key: string, value: string) => {
+  const changeCardInfo = (item: Card) => {
     setCards((prev) => {
       return prev.map((card) => {
-        if (card.id === id) {
-          return {
-            ...card,
-            [key]: value,
-          };
+        if (card.id === item.id) {
+          return item;
         } else {
           return card;
         }

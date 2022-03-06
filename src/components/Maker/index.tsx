@@ -8,7 +8,7 @@ type MakerProps = {
   cards: Card[];
   addCard: (cardInfo: Card) => void;
   deleteCard: (cardId: string) => void;
-  changeCardInfo: (id: string, key: string, value: string) => void;
+  changeCardInfo: (card: Card) => void;
 };
 
 const index = ({ cards, addCard, deleteCard, changeCardInfo }: MakerProps) => {
