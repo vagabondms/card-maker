@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Card from "../../components/Card";
+import Layout from "../../components/Layout";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { useAuth } from "../../hooks/useAuth";
@@ -18,13 +18,11 @@ const Login = () => {
 
   const google = async () => {
     await googleSignIn();
-
     navigate(from, { replace: true });
   };
 
   const github = async () => {
     await gitHubSignIn();
-
     navigate(from, { replace: true });
   };
 
@@ -34,10 +32,13 @@ const Login = () => {
 
   return (
     <section className={styles.login}>
-      <Card header={<Header />} footer={<Footer />} width={30}>
+      <Layout
+        header={<Header />}
+        footer={<Footer />}
+        styles={{ width: "30rem" }}
+      >
         <section className={styles.auth}>
           <h2 style={{ color: "black" }}>Login</h2>
-
           <button className={styles.button} onClick={google}>
             GOOGLE
           </button>
@@ -45,7 +46,7 @@ const Login = () => {
             GitHub
           </button>
         </section>
-      </Card>
+      </Layout>
     </section>
   );
 };

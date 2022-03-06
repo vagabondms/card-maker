@@ -1,0 +1,18 @@
+@use "src/styles/colors" as colors;
+@use "src/styles/mediaQuery" as mq;
+.main {
+  background-color: grey;
+  text-align: center;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  @media screen and (max-width: mq.$mediaQuery) {
+    flex-direction: column;
+  }
+}
+
+.title {
+  color: colors.$color-green;
+}
